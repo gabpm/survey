@@ -1,19 +1,19 @@
 <h3>Survey List</h3>
 
-<p>Here is a list of all your survey questions</p>
+<p>Here is a list of all your surveys</p>
 
 <ul>
   <% @surveys.each do |survey| %>
-    <li><%= survey.question %></li>
+    <li><%= survey.name %></li>
   <% end %>
 </ul>
 
-<p>Create a new question</p>
+<p>Create a new survey</p>
 
 
-<form action="/questions" method='post'>
-  <label for='question'>Question</label>
-  <input id='question' name='question' type='text'>
+<form action="/surveys" method='post'>
+  <label for='name'>Survey</label>
+  <input id='name' name='name' type='text'>
 
-  <button type='submit' class='btn btn-default'>Add Question</button>
+  <button type='submit' class='btn btn-default'>Add Survey</button>
 </form>
