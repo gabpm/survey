@@ -1,10 +1,10 @@
-<h1>Survey List</h1>
+<h3>Survey List</h3>
 
 <p>Here is a list of all your survey questions</p>
 
 <ul>
-  <% @questions.each do |question| %>
-    <li><%= question.question %></li>
+  <% @surveys.each do |survey| %>
+    <li><%= survey.question %></li>
   <% end %>
 </ul>
 

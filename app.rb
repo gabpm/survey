@@ -3,14 +3,16 @@ Bundler.require(:default)
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
+DB = PG.connect({:dbname => 'survey_development'})
+
 get('/') do
-  @question = Question.all()
+  @surveys = Question.all()
   erb(:index)
 end
 
 post('/questions') do
   question = params.fetch('question')
-  @question = Question.new({:question => question})
-  @task.save()
+  @survey = Question.new({:question => question})
+  @survey.save()
   erb(:success)
 end
