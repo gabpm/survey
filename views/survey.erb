@@ -1,4 +1,4 @@
-<h1>Add a question to <%= @survey.name() %> </h1>
+<h3>Add a question to the "<%= @survey.name() %>" survey</h3>
 
 <form action="/questions" method="post">
   <input id="survey_id" name="survey_id" type="hidden" value="<%= @survey.id() %>">
