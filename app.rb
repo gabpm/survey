@@ -10,16 +10,24 @@ get('/') do
   erb(:index)
 end
 
-post('/questions') do
-  question = params.fetch('question')
-  @new_question = Question.new({:question => question})
-  @new_question.save()
-  erb(:success)
-end
-
 post('/surveys') do
   name = params.fetch('name')
   @survey = Survey.new({:name => name})
   @survey.save()
-  erb(:success)
+  @surveys = Survey.all()
+  erb(:index)
+end
+
+get('/surveys/:id') do
+  @survey = Survey.find(params.fetch("id").to_i())
+  erb(:survey)
+end
+
+post('/questions') do
+  question = params.fetch('question')
+  survey_id = params.fetch('survey_id').to_i()
+  new_question = Question.new({:question => question, :survey_id => survey_id})
+  new_question.save()
+  @survey = Survey.find(survey_id)
+  erb(:survey)
 end
