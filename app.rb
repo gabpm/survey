@@ -31,3 +31,17 @@ post('/questions') do
   @survey = Survey.find(survey_id)
   erb(:survey)
 end
+
+get('/questions/:id') do
+  @question = Question.find(params.fetch("id").to_i())
+  erb(:question)
+end
+
+post('/answers') do
+  answer = params.fetch('answer')
+  question_id = params.fetch('question_id').to_i()
+  new_answer = Answer.new({:answer => answer, :question_id => question_id})
+  new_answer.save()
+  @question = Question.find(question_id)
+  erb(:question)
+end

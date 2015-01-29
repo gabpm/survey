@@ -14,7 +14,8 @@
 
 <ul>
   <% @survey.questions().each() do |questions| %>
-  <li><%= questions.question() %></li>
+  
+  <li><a href="/questions/<%= questions.id() %>"><%= questions.question %></a></li>
   <% end %>
 </ul>
 <% else %>
